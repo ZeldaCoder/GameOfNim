@@ -1,13 +1,18 @@
 import java.util.Random;
+import java.util.ArrayList;
 
 public class Board {
+    // Variales for random generation
     private int maxPilesInPieces = 50;
     private int minPiecesInPieces = 10;
 
-    public int pile_1;
-    public int pile_2;
-    public int pile_3;
+    // each int represents each pile
+    private Pile pile_1;
+    private Pile pile_2;
+    private Pile pile_3;
 
+    private ArrayList<Pile> listOfPiles = new ArrayList<Pile>();
+ 
     public Board() {
         // Create piles
         InitPiles();
@@ -17,15 +22,25 @@ public class Board {
     }
 
     public void InitPiles() {
+        // init the piles
         Random rand = new Random();
-        pile_1 = rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1);
-        pile_2 = rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1);
-        pile_3 = rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1);
+        pile_1 = new Pile(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1), "Pile 1");
+        pile_2 = new Pile(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1), "Pile 2");
+        pile_3 = new Pile(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1), "Pile 3");
+
+        // Add init the list
+        listOfPiles.add(pile_1);
+        listOfPiles.add(pile_2);
+        listOfPiles.add(pile_3);
     }
 
     public void DisplayPiles() {
-        System.out.println("Pile 1 Has " + pile_1 + " Pieces");
-        System.out.println("Pile 2 Has " + pile_2 + " Pieces");
-        System.out.println("Pile 3 Has " + pile_3 + " Pieces");
+        System.out.println(pile_1.getPileName() + " Has " + pile_1.getPileAmount() + " Pieces");
+        System.out.println(pile_2.getPileName() +  " Has " + pile_2.getPileAmount() + " Pieces");
+        System.out.println(pile_3.getPileName() +  " Has " + pile_3.getPileAmount() + " Pieces");
+    }
+
+    public ArrayList<Pile> getPiles() {
+        return listOfPiles;
     }
 }
