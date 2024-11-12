@@ -7,7 +7,7 @@ public class GameRunner
     // Board.populate(); 
     
     Game nim = new Game(); 
-    // nim.play();
+    nim.play();
     
   }
 }

@@ -1,4 +1,4 @@
-class Pile {
+public class Pile {
     private int pileAmount;
     private String pileName;
 
