@@ -36,7 +36,6 @@ public class Player {
 
                     // update score to reflect how many pieces you took
                     score += pieces;
-                    System.out.println(pieces);
                 }
             } else {
                 System.out.println("Please enter a number!");

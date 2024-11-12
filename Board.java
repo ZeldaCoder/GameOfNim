@@ -24,9 +24,23 @@ public class Board {
     public void InitPiles() {
         // init the piles
         Random rand = new Random();
-        pile_1 = new Pile(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1), "Pile 1");
-        pile_2 = new Pile(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1), "Pile 2");
-        pile_3 = new Pile(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1), "Pile 3");
+        if (pile_1 == null) {
+            pile_1 = new Pile(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1), "Pile 1");
+        } else {
+            pile_1.setPileAmount(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1));
+        }
+
+        if (pile_2 == null) {
+            pile_2 = new Pile(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1), "Pile 2");
+        } else {
+            pile_2.setPileAmount(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1));
+        }
+
+        if (pile_3 == null) {
+            pile_3 = new Pile(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1), "Pile 3");
+        } else {
+            pile_3.setPileAmount(rand.nextInt(minPiecesInPieces, maxPilesInPieces + 1));
+        }
 
         // Add init the list
         listOfPiles.add(pile_1);

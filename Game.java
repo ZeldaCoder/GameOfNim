@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
@@ -29,13 +30,19 @@ public class Game {
             int pileNum = turnNum % 3;
             ArrayList<Pile> piles = gameBoard.getPiles();
 
-            System.out.print(piles.get(pileNum).getPileName() + " Pile: ");
+            //If at the start of a game decide who goes first 
+            if (turnNum == 0) {
+                Random rand = new Random();
+
+                int choseFirstPlayer = rand.nextInt(0, 2);
+
+                turnNum += choseFirstPlayer;
+
+            }
 
             // Determine whos turn it is
             if (turnNum % 2 == 0) {
-                System.out.println("Before");
                 p1.TakePieces(piles.get(pileNum));
-                System.out.println("After");
                 
                 int count = 0;
 
@@ -54,9 +61,7 @@ public class Game {
                             p1.getName() + " has a score of " + p1.getScore() + ". It is now " + p2.getName() + "'s turn");
                 }
             } else {
-                System.out.println("Before");
                 p2.TakePieces(piles.get(pileNum));
-                System.out.println("After");
 
                 int count = 0;
 
@@ -78,8 +83,6 @@ public class Game {
 
             // Increase number of turns
             turnNum++;
-
-            System.out.println("Turn Number: " + turnNum);
 
             gameBoard.DisplayPiles();
         }
@@ -105,6 +108,7 @@ public class Game {
                 if (playAgain.equals("y") || playAgain.equals("Y")) {
                     gameOver = false; // Reset gameOver
                     Reset();
+                    gameBoard.DisplayPiles();
                 } else {
                     System.out.println("Thanks for playing!");
                     scan.close();
